@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 
 function App() {
   const [characters, setCharacters] = useState([]);
+  const [filterValue, setFilterValue] = useState('');
+  const [filteredCharacters, setFilteredCharacters] = useState([]);
 
   useEffect(() => {
     const fetchCharacters = () => {
@@ -14,11 +16,27 @@ function App() {
     fetchCharacters();
   }, []);
 
+  const handleFilterChange = (event) => {
+    const inputValue = event.target.value;
+    setFilterValue(inputValue);
+
+    const filtered = characters.filter((character) =>
+      character.name.toLowerCase().includes(inputValue.toLowerCase())
+    );
+    setFilteredCharacters(filtered);
+  };
+
   return (
     <div>
       <h1>Rick and Morty Characters</h1>
+      <input
+        type="text"
+        value={filterValue}
+        onChange={handleFilterChange}
+        placeholder="Search by name"
+      />
       <div>
-        {characters.map((character) => (
+        {(filterValue !== '' ? filteredCharacters : characters).map((character) => (
           <div key={character.id}>
             <img src={character.image} alt={character.name} />
             <p>Name: {character.name}</p>
@@ -31,5 +49,6 @@ function App() {
 }
 
 export default App;
+
 
 
