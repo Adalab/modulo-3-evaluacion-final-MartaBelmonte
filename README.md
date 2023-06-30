@@ -1,6 +1,6 @@
-# React starter kit
 #  DESCRIPCIÓN
 
+Esta página web consiste en mostrar a los personajes de Rick and Morty a través de una API (https://rickandmortyapi.com/documentation/#get-all-characters) de los cuales podemos filtrar por el nombre del personaje y por especie.
 
 
 #  INSTALACIÓN Y USO
