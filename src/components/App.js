@@ -31,8 +31,14 @@ function App() {
         <h1>Rick and Morty Characters</h1>
         <Filters filterValue={filterValue} handleFilterChange={handleFilterChange} />
         <Routes>
-          <Route path="/" element={<CharacterList characters={characters} />} />
-          <Route path="/character/:id" element={<CharacterDetail characters={characters} />} />
+          <Route
+            path="/"
+            element={<CharacterList characters={characters} filterValue={filterValue} />}
+          />
+          <Route
+            path="/character/:id"
+            element={<CharacterDetail characters={characters} />}
+          />
         </Routes>
       </div>
     </Router>
@@ -40,6 +46,11 @@ function App() {
 }
 
 export default App;
+
+
+
+
+
 
 
 

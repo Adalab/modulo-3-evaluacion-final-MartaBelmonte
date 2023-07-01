@@ -1,35 +1,30 @@
 // CharacterList.js
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 
 function CharacterList({ characters }) {
-  const [filter, setFilter] = useState('');
+  const [selectedCharacter, setSelectedCharacter] = useState(null);
 
-  const handleFilterChange = (event) => {
-    setFilter(event.target.value);
+  const handleCharacterClick = (character) => {
+    setSelectedCharacter(character);
   };
 
-  const filteredCharacters = characters.filter((character) =>
-    character.name?.toLowerCase().includes(filter.toLowerCase())
-  );
+  if (selectedCharacter) {
+    return <Navigate to={`/character/${selectedCharacter.id}`} />;
+  }
 
   return (
     <div>
-      <input
-        type="text"
-        value={filter}
-        onChange={handleFilterChange}
-        placeholder="Search by name"
-      />
+      <input type="text" placeholder="Search by name" />
 
-      {filteredCharacters.length === 0 ? (
-        <div>No hay ningún personaje que coincida con la palabra buscada.</div>
+      {characters.length === 0 ? (
+        <div>No hay ningún personaje disponible.</div>
       ) : (
-        filteredCharacters.map((character) => (
-          <Link key={character.id} to={`/character/${character.id}`}>
+        characters.map((character) => (
+          <div key={character.id} onClick={() => handleCharacterClick(character)}>
             <img src={character.image} alt={character.name} />
             <p>{character.name}</p>
-          </Link>
+          </div>
         ))
       )}
     </div>
@@ -37,6 +32,7 @@ function CharacterList({ characters }) {
 }
 
 export default CharacterList;
+
 
 
 

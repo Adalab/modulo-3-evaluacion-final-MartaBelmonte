@@ -7,7 +7,7 @@ function CharacterDetail({ characters }) {
   const character = characters.find((character) => character.id === parseInt(id));
 
   if (!character) {
-    return <div>Character not found.</div>;
+    return <div>Loading...</div>; // Mostrar un mensaje de carga mientras se obtienen los datos del personaje
   }
 
   return (
@@ -15,12 +15,15 @@ function CharacterDetail({ characters }) {
       <img src={character.image} alt={character.name} />
       <p>Name: {character.name}</p>
       <p>Species: {character.species}</p>
-      {/* Agrega más detalles del personaje aquí */}
+      <p>Origin: {character.origin.name}</p>
+      <p>Episode count: {character.episode.length}</p>
+      <p>Status: {character.status}</p>
     </div>
   );
 }
 
 export default CharacterDetail;
+
 
 
 
