@@ -26,6 +26,7 @@ function CharacterList({ characters, filterValue }) {
           <div key={character.id} onClick={() => handleCharacterClick(character)} className="character-item">
             <img src={character.image} alt={character.name} />
             <p>{character.name}</p>
+            <p>{character.species}</p>
           </div>
         ))
       )}

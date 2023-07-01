@@ -13,8 +13,8 @@ function Filters({ handleFilterChange }) {
 
   return (
     <form onSubmit={handleSubmit} className="filters">
-      <input type="text" placeholder="Search by name" onChange={handleInputChange} />
-      <button type="submit">Search</button>
+      <input type="text" placeholder="Search by name" className="input-filters" onChange={handleInputChange} />
+      <button type="submit" className="input-button">Search</button>
     </form>
   );
 }

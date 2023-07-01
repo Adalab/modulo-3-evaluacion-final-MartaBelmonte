@@ -44,7 +44,6 @@ function CharacterDetail({ characters }) {
       <p>Gender: {selectedCharacter.gender}</p>
       <p>Location: {selectedCharacter.location.name}</p>
       <img src={selectedCharacter.image} alt={selectedCharacter.name} />
-      <Link to="/" className="back-link">Back to Character List</Link>
     </div>
   );
 }
