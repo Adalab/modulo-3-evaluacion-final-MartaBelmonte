@@ -20,16 +20,15 @@ function App() {
     fetchCharacters();
   }, []);
 
-  const handleFilterChange = (event) => {
-    const inputValue = event.target.value;
-    setFilterValue(inputValue);
+  const handleFilterChange = (value) => {
+    setFilterValue(value);
   };
 
   return (
     <Router>
       <div>
         <h1>Rick and Morty Characters</h1>
-        <Filters filterValue={filterValue} handleFilterChange={handleFilterChange} />
+        <Filters handleFilterChange={handleFilterChange} />
         <Routes>
           <Route
             path="/"

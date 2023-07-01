@@ -2,18 +2,20 @@
 import React from 'react';
 
 function Filters({ handleFilterChange }) {
-  const handleKeyDown = (event) => {
-    if (event.key === 'Enter') {
-      event.preventDefault();
-    }
-  };
-
   const handleSubmit = (event) => {
     event.preventDefault();
   };
 
+  const handleInputChange = (event) => {
+    const value = event.target.value;
+    handleFilterChange(value);
+  };
+
   return (
-    <form onSubmit={handleSubmit}></form>
+    <form onSubmit={handleSubmit}>
+      <input type="text" placeholder="Search by name" onChange={handleInputChange} />
+      <button type="submit">Search</button>
+    </form>
   );
 }
 
