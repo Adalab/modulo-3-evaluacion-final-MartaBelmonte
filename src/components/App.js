@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Filters from './Filters/Filters';
-
+import CharacterList from './CharacterList/CharacterList';
+import CharacterDetail from './CharacterDetail/CharacterDetail';
 
 function App() {
   const [characters, setCharacters] = useState([]);
   const [filterValue, setFilterValue] = useState('');
   const [filteredCharacters, setFilteredCharacters] = useState([]);
+  const [selectedCharacter, setSelectedCharacter] = useState(null);
 
   useEffect(() => {
     const fetchCharacters = () => {
@@ -28,24 +30,26 @@ function App() {
     setFilteredCharacters(filtered);
   };
 
+  const handleCharacterClick = (character) => {
+    setSelectedCharacter(character);
+  };
+
   return (
     <div>
       <h1>Rick and Morty Characters</h1>
       <Filters filterValue={filterValue} handleFilterChange={handleFilterChange} />
-      <div>
-        {(filterValue !== '' ? filteredCharacters : characters).map((character) => (
-          <div key={character.id}>
-            <img src={character.image} alt={character.name} />
-            <p>Name: {character.name}</p>
-            <p>Species: {character.species}</p>
-          </div>
-        ))}
-      </div>
+      <CharacterList
+        characters={characters}
+        filteredCharacters={filteredCharacters}
+        handleCharacterClick={handleCharacterClick}
+      />
+      {selectedCharacter && <CharacterDetail character={selectedCharacter} />}
     </div>
   );
 }
 
 export default App;
+
 
 
 
