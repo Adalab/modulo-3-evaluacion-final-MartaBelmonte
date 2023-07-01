@@ -1,13 +1,13 @@
+// App.js
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Filters from './Filters/Filters';
+import CharacterList from './CharacterList/CharacterList';
 import CharacterDetail from './CharacterDetail/CharacterDetail';
 
 function App() {
   const [characters, setCharacters] = useState([]);
   const [filterValue, setFilterValue] = useState('');
-  const [filteredCharacters, setFilteredCharacters] = useState([]);
-  const [selectedCharacter, setSelectedCharacter] = useState(null);
 
   useEffect(() => {
     const fetchCharacters = () => {
@@ -23,15 +23,6 @@ function App() {
   const handleFilterChange = (event) => {
     const inputValue = event.target.value;
     setFilterValue(inputValue);
-
-    const filtered = characters.filter((character) =>
-      character.name.toLowerCase().includes(inputValue.toLowerCase())
-    );
-    setFilteredCharacters(filtered);
-  };
-
-  const handleCharacterClick = (character) => {
-    setSelectedCharacter(character);
   };
 
   return (
@@ -40,12 +31,8 @@ function App() {
         <h1>Rick and Morty Characters</h1>
         <Filters filterValue={filterValue} handleFilterChange={handleFilterChange} />
         <Routes>
-          <Route
-            path="/"
-            element={
-              <CharacterDetail character={selectedCharacter} />
-            }
-          />
+          <Route path="/" element={<CharacterList characters={characters} />} />
+          <Route path="/character/:id" element={<CharacterDetail characters={characters} />} />
         </Routes>
       </div>
     </Router>
@@ -53,6 +40,17 @@ function App() {
 }
 
 export default App;
+
+
+
+
+
+
+
+
+
+
+
 
 
 
