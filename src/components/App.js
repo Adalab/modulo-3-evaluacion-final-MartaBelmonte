@@ -1,6 +1,5 @@
-// App.js
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import Filters from './Filters/Filters';
 import CharacterList from './CharacterList/CharacterList';
 import CharacterDetail from './CharacterDetail/CharacterDetail';
@@ -45,6 +44,7 @@ function App() {
 }
 
 export default App;
+
 
 
 

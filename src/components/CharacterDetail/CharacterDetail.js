@@ -1,28 +1,56 @@
-// CharacterDetail.js
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 
 function CharacterDetail({ characters }) {
   const { id } = useParams();
-  const character = characters.find((character) => character.id === parseInt(id));
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  if (!character) {
-    return <div>Loading...</div>; // Mostrar un mensaje de carga mientras se obtienen los datos del personaje
+  useEffect(() => {
+    const selectedCharacter = characters.find((character) => character.id === parseInt(id));
+    if (!selectedCharacter) {
+      // Si no se encuentra el personaje, redirigir a la lista de personajes
+      navigate('/');
+    }
+  }, [characters, id, navigate]);
+
+  useEffect(() => {
+    const handleBackNavigation = (event) => {
+      if (event.persist) {
+        event.persist();
+      }
+      if (event.keyCode === 37 && location.pathname.includes('character')) {
+        navigate('/');
+      }
+    };
+
+    window.addEventListener('keydown', handleBackNavigation);
+
+    return () => {
+      window.removeEventListener('keydown', handleBackNavigation);
+    };
+  }, [navigate, location]);
+
+  const selectedCharacter = characters.find((character) => character.id === parseInt(id));
+  if (!selectedCharacter) {
+    return null; 
   }
 
   return (
     <div>
-      <img src={character.image} alt={character.name} />
-      <p>Name: {character.name}</p>
-      <p>Species: {character.species}</p>
-      <p>Origin: {character.origin.name}</p>
-      <p>Episode count: {character.episode.length}</p>
-      <p>Status: {character.status}</p>
+      <h2>{selectedCharacter.name}</h2>
+      <p>Species: {selectedCharacter.species}</p>
+      <p>Status: {selectedCharacter.status}</p>
+      <p>Gender: {selectedCharacter.gender}</p>
+      <p>Location: {selectedCharacter.location.name}</p>
+      <img src={selectedCharacter.image} alt={selectedCharacter.name} />
     </div>
   );
 }
 
 export default CharacterDetail;
+
+
 
 
 
