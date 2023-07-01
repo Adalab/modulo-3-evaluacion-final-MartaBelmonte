@@ -1,14 +1,23 @@
+// Filters.js
 import React from 'react';
 
-function Filters({ filterValue, handleFilterChange }) {
+function Filters({ handleFilterChange }) {
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+    }
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
+
   return (
-    <input
-      type="text"
-      value={filterValue}
-      onChange={handleFilterChange}
-      placeholder="Search by name"
-    />
+    <form onSubmit={handleSubmit}></form>
   );
 }
 
 export default Filters;
+
+
+
