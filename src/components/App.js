@@ -1,5 +1,7 @@
+// App.js
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
+import '../styles/App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Filters from './Filters/Filters';
 import CharacterList from './CharacterList/CharacterList';
 import CharacterDetail from './CharacterDetail/CharacterDetail';
@@ -25,8 +27,8 @@ function App() {
 
   return (
     <Router>
-      <div>
-        <h1>Rick and Morty Characters</h1>
+      <div className="container">
+        <h1 className="title">Rick and Morty Characters</h1>
         <Filters handleFilterChange={handleFilterChange} />
         <Routes>
           <Route

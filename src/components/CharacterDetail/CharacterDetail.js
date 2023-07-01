@@ -1,5 +1,6 @@
+// CharacterDetail.js
 import React, { useEffect } from 'react';
-import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import { useParams, Link, useNavigate, useLocation } from 'react-router-dom';
 
 function CharacterDetail({ characters }) {
   const { id } = useParams();
@@ -9,7 +10,6 @@ function CharacterDetail({ characters }) {
   useEffect(() => {
     const selectedCharacter = characters.find((character) => character.id === parseInt(id));
     if (!selectedCharacter) {
-      // Si no se encuentra el personaje, redirigir a la lista de personajes
       navigate('/');
     }
   }, [characters, id, navigate]);
@@ -33,17 +33,18 @@ function CharacterDetail({ characters }) {
 
   const selectedCharacter = characters.find((character) => character.id === parseInt(id));
   if (!selectedCharacter) {
-    return null; 
+    return null;
   }
 
   return (
-    <div>
+    <div className="character-detail">
       <h2>{selectedCharacter.name}</h2>
       <p>Species: {selectedCharacter.species}</p>
       <p>Status: {selectedCharacter.status}</p>
       <p>Gender: {selectedCharacter.gender}</p>
       <p>Location: {selectedCharacter.location.name}</p>
       <img src={selectedCharacter.image} alt={selectedCharacter.name} />
+      <Link to="/" className="back-link">Back to Character List</Link>
     </div>
   );
 }

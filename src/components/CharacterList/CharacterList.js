@@ -18,12 +18,12 @@ function CharacterList({ characters, filterValue }) {
   );
 
   return (
-    <div>
+    <div className="character-list">
       {filteredCharacters.length === 0 ? (
         <div>No hay ningún personaje disponible.</div>
       ) : (
         filteredCharacters.map((character) => (
-          <div key={character.id} onClick={() => handleCharacterClick(character)}>
+          <div key={character.id} onClick={() => handleCharacterClick(character)} className="character-item">
             <img src={character.image} alt={character.name} />
             <p>{character.name}</p>
           </div>
