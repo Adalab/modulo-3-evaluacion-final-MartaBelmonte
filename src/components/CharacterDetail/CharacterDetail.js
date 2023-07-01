@@ -1,6 +1,14 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 
-function CharacterDetail({ character }) {
+function CharacterDetail({ characters }) {
+  const { id } = useParams();
+  const character = characters.find((character) => character.id === parseInt(id));
+
+  if (!character) {
+    return <div>Character not found.</div>;
+  }
+
   return (
     <div>
       <img src={character.image} alt={character.name} />
@@ -12,4 +20,3 @@ function CharacterDetail({ character }) {
 }
 
 export default CharacterDetail;
-

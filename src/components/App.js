@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Filters from './Filters/Filters';
-import CharacterList from './CharacterList/CharacterList';
 import CharacterDetail from './CharacterDetail/CharacterDetail';
 
 function App() {
@@ -35,20 +35,28 @@ function App() {
   };
 
   return (
-    <div>
-      <h1>Rick and Morty Characters</h1>
-      <Filters filterValue={filterValue} handleFilterChange={handleFilterChange} />
-      <CharacterList
-        characters={characters}
-        filteredCharacters={filteredCharacters}
-        handleCharacterClick={handleCharacterClick}
-      />
-      {selectedCharacter && <CharacterDetail character={selectedCharacter} />}
-    </div>
+    <Router>
+      <div>
+        <h1>Rick and Morty Characters</h1>
+        <Filters filterValue={filterValue} handleFilterChange={handleFilterChange} />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <CharacterDetail character={selectedCharacter} />
+            }
+          />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
 export default App;
+
+
+
+
 
 
 
