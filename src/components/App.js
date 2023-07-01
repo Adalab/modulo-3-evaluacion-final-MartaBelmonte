@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import Filters from './Filters/Filters';
+
 
 function App() {
   const [characters, setCharacters] = useState([]);
@@ -29,12 +31,7 @@ function App() {
   return (
     <div>
       <h1>Rick and Morty Characters</h1>
-      <input
-        type="text"
-        value={filterValue}
-        onChange={handleFilterChange}
-        placeholder="Search by name"
-      />
+      <Filters filterValue={filterValue} handleFilterChange={handleFilterChange} />
       <div>
         {(filterValue !== '' ? filteredCharacters : characters).map((character) => (
           <div key={character.id}>
