@@ -1,6 +1,6 @@
 // CharacterList.js
 import React, { useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 function CharacterList({ characters, filterValue }) {
   const [selectedCharacter, setSelectedCharacter] = useState(null);
@@ -17,13 +17,21 @@ function CharacterList({ characters, filterValue }) {
     character.name.toLowerCase().includes(filterValue.toLowerCase())
   );
 
+  const sortedCharacters = [...filteredCharacters].sort((a, b) =>
+    a.name.localeCompare(b.name)
+  );
+
   return (
     <div className="character-list">
-      {filteredCharacters.length === 0 ? (
+      {sortedCharacters.length === 0 ? (
         <div>No hay ningún personaje disponible.</div>
       ) : (
-        filteredCharacters.map((character) => (
-          <div key={character.id} onClick={() => handleCharacterClick(character)} className="character-item">
+        sortedCharacters.map((character) => (
+          <div
+            key={character.id}
+            onClick={() => handleCharacterClick(character)}
+            className="character-item"
+          >
             <img src={character.image} alt={character.name} />
             <p>{character.name}</p>
             <p>{character.species}</p>
