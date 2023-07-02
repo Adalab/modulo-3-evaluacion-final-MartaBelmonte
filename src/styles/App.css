@@ -1,5 +1,5 @@
 body {
-    background-image: url(/src/images/fondo.jpeg);
+    background-image: url(/src/Images/fondo.jpeg);
     background-color: black;
     background-repeat: no-repeat;
 }
@@ -48,7 +48,7 @@ body {
     color: white;
 }
 
-.character-detail img {
+.img-detail {
     width: 300px;
     height: 300px;
     object-fit: cover;
@@ -89,4 +89,34 @@ body {
     right: 10px;
     color: #ffc0cb;
     text-decoration: none;
+}
+
+.dead-icon-container {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.dead-icon {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: red;
+}
+.blink {
+    animation: blink-animation 1s infinite;
+}
+
+@keyframes blink-animation {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }

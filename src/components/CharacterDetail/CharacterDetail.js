@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useParams, Link, useNavigate, useLocation } from 'react-router-dom';
+import Dead from '../../Images/dead.png';
 
 function CharacterDetail({ characters }) {
   const { id } = useParams();
@@ -43,7 +44,12 @@ function CharacterDetail({ characters }) {
       <p>Gender: {selectedCharacter.gender}</p>
       <p>Location: {selectedCharacter.location.name}</p>
       <div className="image-container">
-        <img src={selectedCharacter.image} alt={selectedCharacter.name} />
+        {selectedCharacter.status === 'Dead' && (
+          <div className="dead-icon-container">
+            <img src={Dead} alt="Dead Icon" className="dead-icon blink" />
+          </div>
+        )}
+        <img src={selectedCharacter.image} alt={selectedCharacter.name} className="img-detail" />
         <Link to="/" className="back-link">Back to Character List</Link>
       </div>
     </div>
@@ -51,6 +57,8 @@ function CharacterDetail({ characters }) {
 }
 
 export default CharacterDetail;
+
+
 
 
 
