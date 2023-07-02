@@ -1,4 +1,3 @@
-// App.js
 import React, { useEffect, useState } from 'react';
 import '../styles/App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -8,7 +7,8 @@ import CharacterDetail from './CharacterDetail/CharacterDetail';
 
 function App() {
   const [characters, setCharacters] = useState([]);
-  const [filterValue, setFilterValue] = useState('');
+  const [nameFilter, setNameFilter] = useState('');
+  const [speciesFilter, setSpeciesFilter] = useState('');
 
   useEffect(() => {
     const fetchCharacters = () => {
@@ -21,8 +21,9 @@ function App() {
     fetchCharacters();
   }, []);
 
-  const handleFilterChange = (value) => {
-    setFilterValue(value);
+  const handleFilterChange = (nameValue, speciesValue) => {
+    setNameFilter(nameValue);
+    setSpeciesFilter(speciesValue);
   };
 
   return (
@@ -33,12 +34,15 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<CharacterList characters={characters} filterValue={filterValue} />}
+            element={
+              <CharacterList
+                characters={characters}
+                nameFilter={nameFilter}
+                speciesFilter={speciesFilter}
+              />
+            }
           />
-          <Route
-            path="/character/:id"
-            element={<CharacterDetail characters={characters} />}
-          />
+          <Route path="/character/:id" element={<CharacterDetail characters={characters} />} />
         </Routes>
       </div>
     </Router>
@@ -46,6 +50,7 @@ function App() {
 }
 
 export default App;
+
 
 
 

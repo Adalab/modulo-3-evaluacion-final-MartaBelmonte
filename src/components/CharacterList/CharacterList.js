@@ -1,8 +1,7 @@
-// CharacterList.js
 import React, { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 
-function CharacterList({ characters, filterValue }) {
+function CharacterList({ characters, nameFilter, speciesFilter }) {
   const [selectedCharacter, setSelectedCharacter] = useState(null);
 
   const handleCharacterClick = (character) => {
@@ -13,20 +12,23 @@ function CharacterList({ characters, filterValue }) {
     return <Navigate to={`/character/${selectedCharacter.id}`} />;
   }
 
-  const filteredCharacters = characters.filter((character) =>
-    character.name.toLowerCase().includes(filterValue.toLowerCase())
-  );
+  const filteredCharacters = characters.filter((character) => {
+    const nameMatch =
+      character.name.toLowerCase().includes(nameFilter.toLowerCase()) ||
+      nameFilter.trim() === '';
+    const speciesMatch =
+      character.species.toLowerCase().includes(speciesFilter.toLowerCase()) ||
+      speciesFilter.trim() === '';
 
-  const sortedCharacters = [...filteredCharacters].sort((a, b) =>
-    a.name.localeCompare(b.name)
-  );
+    return nameMatch && speciesMatch;
+  });
 
   return (
     <div className="character-list">
-      {sortedCharacters.length === 0 ? (
+      {filteredCharacters.length === 0 ? (
         <div>No hay ningún personaje disponible.</div>
       ) : (
-        sortedCharacters.map((character) => (
+        filteredCharacters.map((character) => (
           <div
             key={character.id}
             onClick={() => handleCharacterClick(character)}
@@ -43,6 +45,8 @@ function CharacterList({ characters, filterValue }) {
 }
 
 export default CharacterList;
+
+
 
 
 

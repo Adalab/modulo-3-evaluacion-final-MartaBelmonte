@@ -14,7 +14,9 @@ body {
     display: flex;
     justify-content: center;
     font-size: 55px;
-    color: white;
+    background: linear-gradient(45deg, rgba(255, 105, 180, 0.5), lime);
+    background-clip: text;
+    color: transparent;
 }
 
 .character-list {
@@ -26,7 +28,7 @@ body {
 .character-item {
     cursor: pointer;
     text-align: center;
-    background-color: white;
+    background-color: rgb(240, 238, 238);
     box-shadow: 0px 5px 5px rgba(255, 105, 180, 0.5);
     /* Sombra rosa */
     padding: 10px;
