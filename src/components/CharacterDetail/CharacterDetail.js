@@ -1,4 +1,3 @@
-// CharacterDetail.js
 import React, { useEffect } from 'react';
 import { useParams, Link, useNavigate, useLocation } from 'react-router-dom';
 
@@ -43,12 +42,16 @@ function CharacterDetail({ characters }) {
       <p>Status: {selectedCharacter.status}</p>
       <p>Gender: {selectedCharacter.gender}</p>
       <p>Location: {selectedCharacter.location.name}</p>
-      <img src={selectedCharacter.image} alt={selectedCharacter.name} />
+      <div className="image-container">
+        <img src={selectedCharacter.image} alt={selectedCharacter.name} />
+        <Link to="/" className="back-link">Back to Character List</Link>
+      </div>
     </div>
   );
 }
 
 export default CharacterDetail;
+
 
 
 
