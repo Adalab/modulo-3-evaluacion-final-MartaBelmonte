@@ -25,13 +25,13 @@ function CharacterDetail({ characters }) {
   return (
     <div className="character-detail">
       <h2 className="character-detail-name">{selectedCharacter.name}</h2>
-      <p>Species: {selectedCharacter.species}</p>
-      <p>Status: {selectedCharacter.status}</p>
-      <p>Gender: {selectedCharacter.gender}</p>
-      <p>Location: {selectedCharacter.location.name}</p>
+      <p>{selectedCharacter.species}</p>
+      <p>{selectedCharacter.status}</p>
+      <p>{selectedCharacter.gender}</p>
+      <p>{selectedCharacter.location.name}</p>
       <div className="image-container">
         {selectedCharacter.status === 'Dead' && (
-          <div className="dead-icon-container">
+          <div className="character-detail-dead">
             <img src={Dead} alt="Dead Icon" className="dead-icon blink" />
           </div>
         )}
