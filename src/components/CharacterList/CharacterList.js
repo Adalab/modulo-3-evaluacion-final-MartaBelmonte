@@ -35,7 +35,7 @@ function CharacterList({ characters, nameFilter, speciesFilter }) {
             className="character-item"
           >
             <img src={character.image} alt={character.name} />
-            <p>{character.name}</p>
+            <p className='bold-name'>{character.name}</p>
             <p>{character.species}</p>
           </div>
         ))
