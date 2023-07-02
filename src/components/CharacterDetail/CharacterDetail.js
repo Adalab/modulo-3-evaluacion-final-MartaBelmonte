@@ -3,20 +3,21 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import Dead from '../../Images/dead.png';
 
 function CharacterDetail({ characters }) {
-  const { id } = useParams();
-  const navigate = useNavigate();
+  const { id } = useParams(); // Obtiene el parámetro 'id' de los parámetros de la URL
+  const navigate = useNavigate(); // Obtiene la función 'navigate' para navegar a diferentes rutas
 
-  useEffect(() => {
+  useEffect(() => {  // Busca el personaje seleccionado en el array de 'characters'
     const selectedCharacter = characters.find((character) => character.id === parseInt(id));
-    if (!selectedCharacter) {
-      navigate('/');
+      if (!selectedCharacter) { // Si no se encuentra el personaje, navega a la ruta principal
+        navigate('/');
     }
   }, [characters, id, navigate]);
 
-  const selectedCharacter = characters.find((character) => character.id === parseInt(id));
-  if (!selectedCharacter) {
-    return null;
-  }
+  
+  const selectedCharacter = characters.find((character) => character.id === parseInt(id));  // Busca el objeto de 'selectedCharacter' cuyo 'id' = 'id' proporcionado en la URL
+    if (!selectedCharacter) { // Si no se encuentra el personaje seleccionado, no se renderiza nada
+      return null;
+    }
 
   const handleBackClick = () => {
     navigate('/');

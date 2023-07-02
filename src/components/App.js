@@ -21,9 +21,10 @@ function App() {
     fetchCharacters();
   }, []);
 
-  const handleFilterChange = (nameValue, speciesValue) => {
-    setNameFilter(nameValue);
-    setSpeciesFilter(speciesValue);
+  // Función para actualizar estados de filtros de especie y nombre
+  const handleFilterChange = (nameValue, speciesValue) => {  //2 parámetros
+    setNameFilter(nameValue);  //actualiza el estado y es un nuevo filtro generado
+    setSpeciesFilter(speciesValue);  
   };
 
   return (
