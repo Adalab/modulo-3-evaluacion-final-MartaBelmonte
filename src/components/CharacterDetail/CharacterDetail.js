@@ -38,7 +38,7 @@ function CharacterDetail({ characters }) {
 
   return (
     <div className="character-detail">
-      <h2>{selectedCharacter.name}</h2>
+      <h2 className="character-detail-name">{selectedCharacter.name}</h2>
       <p>Species: {selectedCharacter.species}</p>
       <p>Status: {selectedCharacter.status}</p>
       <p>Gender: {selectedCharacter.gender}</p>

@@ -6,7 +6,7 @@ body {
 
 .container {
     max-width: 800px;
-    margin: 0 auto;
+    margin: auto;
     padding: 20px;
 }
 
@@ -17,6 +17,7 @@ body {
     background: linear-gradient(45deg, rgba(255, 105, 180, 0.5), lime);
     background-clip: text;
     color: transparent;
+    font-family: 'Roboto', sans-serif;
 }
 
 .character-list {
@@ -37,8 +38,6 @@ body {
 
 .character-item img {
     width: 100%;
-    max-height: 200px;
-    object-fit: cover;
 }
 
 .character-item p {
@@ -48,12 +47,13 @@ body {
 
 .character-detail {
     color: white;
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .img-detail {
     width: 300px;
     height: 300px;
-    object-fit: cover;
     float: right;
 }
 
@@ -69,12 +69,14 @@ body {
     border-radius: 4px;
     box-shadow: 0px 5px 5px rgba(255, 250, 105, 0.5);
     cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .input-button {
     border-radius: 4px;
     box-shadow: 0px 5px 5px rgba(255, 250, 105, 0.5);
     cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .character-item:hover {
@@ -89,7 +91,7 @@ body {
     position: absolute;
     top: 10px;
     right: 10px;
-    color: #ffc0cb;
+    color: #de0c2f;
     text-decoration: none;
 }
 
@@ -123,69 +125,58 @@ body {
     }
 }
 
-@media (max-width: 320px) {
-    body {
-        background-image: url(/src/Images/fondo.jpeg);
-        background-color: black;
-        background-repeat: no-repeat;
+.character-detail-name {
+    background: linear-gradient(45deg, rgba(255, 105, 180, 0.5), lime);
+    background-clip: text;
+    color: transparent;
+    font-size: 40px;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
     }
 
-    .title {
-        font-size: 35px;
+    to {
+        transform: translateX(0);
+        opacity: 1;
     }
+}
+
+@media (max-width: 320px) {
 
     .character-list {
-        grid-template-columns: repeat(1, 1fr);
-        grid-gap: 10px;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 8px;
     }
-        .character-item {
-            padding: 5px;
-            border-radius: 2px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
     
-        .character-item img {
-            width: 100%;
-            height: auto;
-            max-height: 150px;
-            object-fit: contain;
-        }
-
-        .filters {
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 10px;
-            gap: 5px;
-        }
+    .filters {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
 
     .input-filters {
-        font-size: 16px;
+        font-size: 13px;
         width: 100%;
-        box-sizing: border-box;
     }
 
         .img-detail {
             width: 100%;
-            height: auto;
             max-height: 200px;
             object-fit: contain;
-            margin: 0 auto;
-            display: block;
         }
     
         .back-link {
             position: relative;
-            left: 0;
             right: 0;
-            margin: 0 auto;
             display: block;
             text-align: center;
         }
 
     .input-button {
-        width: 50%;
+        width: 40%;
     }
 .dead-icon-container {
     left: -5px;
@@ -195,4 +186,5 @@ body {
     width: 70px;
     height: 70px;
 }
+
 }
