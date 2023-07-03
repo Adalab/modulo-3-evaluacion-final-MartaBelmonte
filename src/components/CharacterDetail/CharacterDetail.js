@@ -9,13 +9,15 @@ function CharacterDetail({ characters }) {
   useEffect(() => {
     const selectedCharacter = characters.find((character) => character.id === parseInt(id));
     if (!selectedCharacter) {
-      navigate('/');
+      // Mostrar mensaje de error personalizado en lugar de redireccionar
+      console.log('No hemos encontrado este personaje');
     }
-  }, [characters, id, navigate]);
+  }, [characters, id]);
 
   const selectedCharacter = characters.find((character) => character.id === parseInt(id));
+
   if (!selectedCharacter) {
-    return null;
+    return <h2 className='notCharacter'>No hemos encontrado este personaje</h2>; // Mostrar mensaje de error personalizado
   }
 
   const handleBackClick = () => {
@@ -45,6 +47,7 @@ function CharacterDetail({ characters }) {
 }
 
 export default CharacterDetail;
+
 
 
 

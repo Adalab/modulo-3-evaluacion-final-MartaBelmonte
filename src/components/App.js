@@ -45,8 +45,8 @@ function App() {
           />
           <Route path="/character/:id" element={<CharacterDetail characters={characters} />} />
           <Route
-            path="/*" // Ruta para cualquier URL no definida anteriormente
-            element={<NotFoundPage />} // Componente para mostrar el mensaje de error
+            path="*" // Ruta para cualquier URL no definida anteriormente
+            element={<NotFoundPage />} className="notFound " // Componente para mostrar el mensaje de error
           />
         </Routes>
       </div>
@@ -55,8 +55,9 @@ function App() {
 }
 
 function NotFoundPage() {
-  return <h2>El personaje que buscas no existe</h2>;
+  return <h2>Not found</h2>;
 }
+
 
 export default App;
 
