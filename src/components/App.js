@@ -22,9 +22,9 @@ function App() {
   }, []);
 
   // Función para actualizar estados de filtros de especie y nombre
-  const handleFilterChange = (nameValue, speciesValue) => {  //2 parámetros
-    setNameFilter(nameValue);  //actualiza el estado y es un nuevo filtro generado
-    setSpeciesFilter(speciesValue);  
+  const handleFilterChange = (nameValue, speciesValue) => {
+    setNameFilter(nameValue);
+    setSpeciesFilter(speciesValue);
   };
 
   return (
@@ -44,13 +44,23 @@ function App() {
             }
           />
           <Route path="/character/:id" element={<CharacterDetail characters={characters} />} />
+          <Route
+            path="/*" // Ruta para cualquier URL no definida anteriormente
+            element={<NotFoundPage />} // Componente para mostrar el mensaje de error
+          />
         </Routes>
       </div>
     </Router>
   );
 }
 
+function NotFoundPage() {
+  return <h2>El personaje que buscas no existe</h2>;
+}
+
 export default App;
+
+
 
 
 

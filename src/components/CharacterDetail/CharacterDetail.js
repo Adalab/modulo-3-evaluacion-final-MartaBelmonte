@@ -1,23 +1,22 @@
 import React, { useEffect } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Dead from '../../Images/dead.png';
 
 function CharacterDetail({ characters }) {
-  const { id } = useParams(); // Obtiene el parámetro 'id' de los parámetros de la URL
-  const navigate = useNavigate(); // Obtiene la función 'navigate' para navegar a diferentes rutas
+  const { id } = useParams();
+  const navigate = useNavigate();
 
-  useEffect(() => {  // Busca el personaje seleccionado en el array de 'characters'
+  useEffect(() => {
     const selectedCharacter = characters.find((character) => character.id === parseInt(id));
-      if (!selectedCharacter) { // Si no se encuentra el personaje, navega a la ruta principal
-        navigate('/');
+    if (!selectedCharacter) {
+      navigate('/');
     }
   }, [characters, id, navigate]);
 
-  
-  const selectedCharacter = characters.find((character) => character.id === parseInt(id));  // Busca el objeto de 'selectedCharacter' cuyo 'id' = 'id' proporcionado en la URL
-    if (!selectedCharacter) { // Si no se encuentra el personaje seleccionado, no se renderiza nada
-      return null;
-    }
+  const selectedCharacter = characters.find((character) => character.id === parseInt(id));
+  if (!selectedCharacter) {
+    return null;
+  }
 
   const handleBackClick = () => {
     navigate('/');
@@ -26,10 +25,12 @@ function CharacterDetail({ characters }) {
   return (
     <div className="character-detail">
       <h2 className="character-detail-name">{selectedCharacter.name}</h2>
-      <p>{selectedCharacter.species}</p>
-      <p>{selectedCharacter.status}</p>
-      <p>{selectedCharacter.gender}</p>
-      <p>{selectedCharacter.location.name}</p>
+      <div className="character-detail-info">
+        <p>{selectedCharacter.species}</p>
+        <p>{selectedCharacter.status}</p>
+        <p>{selectedCharacter.gender}</p>
+        <p>{selectedCharacter.location.name}</p>
+      </div>
       <div className="image-container">
         {selectedCharacter.status === 'Dead' && (
           <div className="character-detail-dead">
@@ -44,6 +45,7 @@ function CharacterDetail({ characters }) {
 }
 
 export default CharacterDetail;
+
 
 
 
