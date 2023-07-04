@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/App.css';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import Filters from './Filters/Filters';
 import CharacterList from './CharacterList/CharacterList';
 import CharacterDetail from './CharacterDetail/CharacterDetail';
